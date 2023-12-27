@@ -1,4 +1,4 @@
-import Home from "@/pages/Home";
+import Home from "@/screens/Home";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as Font from "expo-font";

@@ -1,5 +1,1 @@
-export const fontFamily = {
-  default: {
-    fontFamily: "Poppins",
-  },
-};
+export const defaultFontFamily = "Poppins";
