@@ -17,6 +17,12 @@ const RemindersForm: React.FC<RemindersFormProps> = ({ mode }) => {
   const isFormValid = () => {
     return name !== "" && selectDate !== null && selectTime !== null;
   };
+  const handleSaveReminder = () => {
+    if (isFormValid()) {
+      Alert.alert("Reminder added");
+      //TODO reminder submission logic here
+    }
+  };
 
   return (
     <>
@@ -55,12 +61,7 @@ const RemindersForm: React.FC<RemindersFormProps> = ({ mode }) => {
           variant="primary"
           text="Add Reminder"
           disabled={!isFormValid()}
-          onPress={() => {
-            if (isFormValid()) {
-              Alert.alert("Reminder added");
-              // Add your reminder submission logic here
-            }
-          }}
+          onPress={handleSaveReminder}
           style={{ alignSelf: "center", marginBottom: 20 }}
         />
       </View>

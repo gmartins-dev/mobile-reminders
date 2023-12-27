@@ -3,27 +3,35 @@ import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import Colors from "../constants/Colors";
 
 interface ButtonProps {
-  variant: "primary" | "danger" | "disabled";
+  variant: "primary" | "danger";
   text: string;
   onPress: () => void;
   style?: object;
+  disabled?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ variant, text, onPress, style }) => {
-  const backgroundColor =
-    variant === "primary"
-      ? Colors.blue
-      : variant === "danger"
-      ? Colors.red
-      : Colors.greyButtonBackground;
+const Button: React.FC<ButtonProps> = ({
+  variant,
+  text,
+  onPress,
+  style,
+  disabled = false,
+}) => {
+  const backgroundColor = disabled
+    ? Colors.greyButtonBackground
+    : variant === "primary"
+    ? Colors.blue
+    : variant === "danger"
+    ? Colors.red
+    : Colors.blue;
 
-  const textColor = variant === "disabled" ? Colors.greyButtonText : "#FFFFFF";
+  const textColor = disabled ? Colors.greyButtonText : "#FFFFFF";
 
   return (
     <TouchableOpacity
       style={[styles.button, { backgroundColor }, style]}
-      onPress={onPress}
-      disabled={variant === "disabled"}
+      onPress={disabled ? undefined : onPress}
+      disabled={disabled}
     >
       <Text style={[styles.text, { color: textColor }]}>{text}</Text>
     </TouchableOpacity>

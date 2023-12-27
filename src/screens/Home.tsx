@@ -21,9 +21,9 @@ const Home: React.FC<NavigationProps> = ({ navigation }) => {
       <Button
         variant="primary"
         text="Add Reminder"
-        onPress={() =>
-          navigation.navigate("Add Reminder", { mode: "Add Reminder" })
-        }
+        onPress={() => {
+          navigation.navigate("Add Reminder", { mode: "Add Reminder" });
+        }}
         style={{ marginTop: 20 }}
       />
     </View>
