@@ -32,14 +32,15 @@ const Button: React.FC<ButtonProps> = ({ variant, text, onPress, style }) => {
 
 const styles = StyleSheet.create({
   button: {
-    padding: 10,
-    borderRadius: 5,
+    paddingVertical: 6,
+    paddingHorizontal: 14,
+    borderRadius: 12,
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 10,
   },
   text: {
-    fontSize: 16,
+    fontSize: 19,
   },
 });
 
