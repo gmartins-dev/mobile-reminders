@@ -1,12 +1,19 @@
 import Home from "@/screens/Home";
+import ReminderFormScreen from "@/screens/ReminderFormScreen";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import * as React from "react";
 import { ActivityIndicator, View } from "react-native";
 
-const Stack = createNativeStackNavigator();
+export type StackNavigatorParams = {
+  'Home': undefined;
+  "Add Reminder": { mode: string };
+  "Edit Reminder": { mode: string };
+};
+
+const Stack = createStackNavigator<StackNavigatorParams>();
 
 async function loadFonts() {
   await Font.loadAsync({
@@ -43,7 +50,17 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Reminders" component={Home} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="Add Reminder"
+          component={ReminderFormScreen}
+          initialParams={{ mode: "Add Reminder" }}
+        />
+        <Stack.Screen
+          name="Edit Reminder"
+          component={ReminderFormScreen}
+          initialParams={{ mode: "Edit Reminder" }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
