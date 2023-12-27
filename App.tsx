@@ -1,5 +1,5 @@
 import Home from "@/screens/Home";
-import ReminderFormScreen from "@/screens/ReminderFormScreen";
+import RemindersFormScreen from "@/screens/RemindersFormScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as Font from "expo-font";
@@ -8,7 +8,7 @@ import * as React from "react";
 import { ActivityIndicator, View } from "react-native";
 
 export type StackNavigatorParams = {
-  'Home': undefined;
+  Home: undefined;
   "Add Reminder": { mode: string };
   "Edit Reminder": { mode: string };
 };
@@ -53,12 +53,12 @@ function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen
           name="Add Reminder"
-          component={ReminderFormScreen}
+          component={RemindersFormScreen}
           initialParams={{ mode: "Add Reminder" }}
         />
         <Stack.Screen
           name="Edit Reminder"
-          component={ReminderFormScreen}
+          component={RemindersFormScreen}
           initialParams={{ mode: "Edit Reminder" }}
         />
       </Stack.Navigator>
