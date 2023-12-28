@@ -1,6 +1,6 @@
-import Home from "@/screens/Home";
-import RemindersFormScreen from "@/screens/RemindersFormScreen";
-import { NavigationContainer } from "@react-navigation/native";
+import { Home } from "@/screens/Home";
+import { RemindersFormScreen } from "@/screens/RemindersFormScreen";
+import { NavigationContainer, RouteProp } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -9,9 +9,13 @@ import * as React from "react";
 import { ActivityIndicator, View } from "react-native";
 
 export type StackNavigatorParams = {
-  Home: undefined;
-  "Add Reminder": { mode: string };
-  "Edit Reminder": { mode: string };
+  Home: {};
+  "Add Reminder": { mode: "Add Reminder" };
+  "Edit Reminder": { mode: "Edit Reminder" };
+};
+
+type RemindersFormScreenProps = {
+  route: RouteProp<StackNavigatorParams, "Add Reminder" | "Edit Reminder">;
 };
 
 const Stack = createStackNavigator<StackNavigatorParams>();
@@ -49,22 +53,28 @@ function App() {
     );
   }
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <StatusBar style="light" backgroundColor="transparent" translucent />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen
-          name="Add Reminder"
-          component={RemindersFormScreen}
-          initialParams={{ mode: "Add Reminder" }}
-        />
-        <Stack.Screen
-          name="Edit Reminder"
-          component={RemindersFormScreen}
-          initialParams={{ mode: "Edit Reminder" }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <StatusBar style="light" backgroundColor="transparent" translucent />
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            cardStyle: { backgroundColor: "#FFF" },
+          }}
+        >
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen
+            name="Add Reminder"
+            component={RemindersFormScreen}
+            initialParams={{ mode: "Add Reminder" }}
+          />
+          <Stack.Screen
+            name="Edit Reminder"
+            component={RemindersFormScreen}
+            initialParams={{ mode: "Edit Reminder" }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 

@@ -3,7 +3,8 @@ import { NoRemindersCard } from "@/components/NoRemindersCard";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { StackNavigatorParams } from "App";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
+import { styles } from "./styles";
 
 type HomeScreenNavigationProp = StackNavigationProp<
   StackNavigatorParams,
@@ -14,7 +15,7 @@ type NavigationProps = {
   navigation: HomeScreenNavigationProp;
 };
 
-const Home: React.FC<NavigationProps> = ({ navigation }) => {
+export function Home({ navigation }: NavigationProps) {
   return (
     <View style={styles.container}>
       <NoRemindersCard />
@@ -28,17 +29,4 @@ const Home: React.FC<NavigationProps> = ({ navigation }) => {
       />
     </View>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "center",
-    marginHorizontal: 20,
-    marginTop: 20,
-    backgroundColor: "#FFF",
-  },
-});
-
-export default Home;
+}
