@@ -1,4 +1,4 @@
-import NoRemindersIcon from "@/assets/icons/noRemindersIcon.png";
+import noRemindersIcon from "@/assets/icons/noRemindersIcon.png";
 import React from "react";
 import { Image, Text, View } from "react-native";
 import { styles } from "./styles";
@@ -8,7 +8,7 @@ export function NoRemindersCard() {
     <View style={styles.cardWrapper}>
       <Image
         resizeMode="contain"
-        source={NoRemindersIcon}
+        source={noRemindersIcon}
         style={styles.cardImage}
       />
       <View>
