@@ -1,7 +1,11 @@
 import { Button } from "@/components/Button";
 import { colors } from "@/theme/colors";
+import { remindersAtom } from "@/utils/store";
+import { useAtom } from "jotai";
 import React, { useState } from "react";
-import { Alert, TextInput, View } from "react-native";
+import { TextInput, View } from "react-native";
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
 import { styles } from "./styles";
 
 export type RemindersFormProps = Readonly<{
@@ -14,15 +18,21 @@ export function RemindersForm({ mode }: RemindersFormProps) {
   const [selectDate, setSelectDate] = useState("");
   const [selectTime, setSelectTime] = useState("");
 
+  const [reminders, setReminders] = useAtom(remindersAtom);
+
   //required fields
   const isFormValid = () => {
     return name !== "" && selectDate !== null && selectTime !== null;
   };
+
   const handleSaveReminder = () => {
     if (isFormValid()) {
-      Alert.alert("Reminder added");
-      //TODO reminder submission logic here
+      setReminders((oldReminders) => [
+        ...oldReminders,
+        { id: uuidv4(), name, notes, selectDate, selectTime },
+      ]);
     }
+    alert("TODO: Reminder Added");
   };
 
   return (

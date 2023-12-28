@@ -1,14 +1,16 @@
 import { Button } from "@/components/Button";
 import { NoRemindersCard } from "@/components/NoRemindersCard";
+import { remindersAtom } from "@/utils/store";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { StackNavigatorParams } from "App";
+import { useAtom } from "jotai";
 import React from "react";
-import { View } from "react-native";
+import { Text, View, ViewStyle } from "react-native";
 import { styles } from "./styles";
 
 type HomeScreenNavigationProp = StackNavigationProp<
   StackNavigatorParams,
-  "Home"
+  "Reminders"
 >;
 
 type NavigationProps = {
@@ -16,9 +18,24 @@ type NavigationProps = {
 };
 
 export function Home({ navigation }: NavigationProps) {
+  const [reminders] = useAtom(remindersAtom);
+
+  const containerConditionalStyle: ViewStyle = {
+    ...styles.container,
+    justifyContent: reminders.length > 0 ? "space-between" : "flex-start",
+  };
+
   return (
-    <View style={styles.container}>
-      <NoRemindersCard />
+    <View style={containerConditionalStyle}>
+      <View>
+        {reminders.length > 0 ? (
+          reminders.map((reminder) => (
+            <Text key={reminder.id}>{reminder.name}</Text>
+          ))
+        ) : (
+          <NoRemindersCard />
+        )}
+      </View>
       <Button
         variant="primary"
         text="Add Reminder"

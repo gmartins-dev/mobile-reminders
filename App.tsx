@@ -1,15 +1,17 @@
 import { Home } from "@/screens/Home";
 import { RemindersFormScreen } from "@/screens/RemindersFormScreen";
+import { colors } from "@/theme/colors";
 import { NavigationContainer, RouteProp } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
+import { Provider as JotaiProvider } from "jotai";
 import * as React from "react";
 import { ActivityIndicator, View } from "react-native";
 
 export type StackNavigatorParams = {
-  Home: {};
+  Reminders: {};
   "Add Reminder": { mode: "Add Reminder" };
   "Edit Reminder": { mode: "Edit Reminder" };
 };
@@ -55,25 +57,33 @@ function App() {
   return (
     <>
       <StatusBar style="light" backgroundColor="transparent" translucent />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            cardStyle: { backgroundColor: "#FFF" },
-          }}
-        >
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen
-            name="Add Reminder"
-            component={RemindersFormScreen}
-            initialParams={{ mode: "Add Reminder" }}
-          />
-          <Stack.Screen
-            name="Edit Reminder"
-            component={RemindersFormScreen}
-            initialParams={{ mode: "Edit Reminder" }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <JotaiProvider>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              cardStyle: { backgroundColor: "#FFF" },
+            }}
+          >
+            <Stack.Screen
+              name="Reminders"
+              component={Home}
+              options={{ headerTintColor: colors.pageHeaders }}
+            />
+            <Stack.Screen
+              name="Add Reminder"
+              component={RemindersFormScreen}
+              initialParams={{ mode: "Add Reminder" }}
+              options={{ headerTintColor: colors.pageHeaders }}
+            />
+            <Stack.Screen
+              name="Edit Reminder"
+              component={RemindersFormScreen}
+              initialParams={{ mode: "Edit Reminder" }}
+              options={{ headerTintColor: colors.pageHeaders }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </JotaiProvider>
     </>
   );
 }
