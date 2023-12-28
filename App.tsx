@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import { ActivityIndicator, View } from "react-native";
 
@@ -50,6 +51,7 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <StatusBar style="light" backgroundColor="transparent" translucent />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen
           name="Add Reminder"

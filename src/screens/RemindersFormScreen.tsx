@@ -1,4 +1,4 @@
-import RemindersForm from "@/components/RemindersForm";
+import {RemindersForm} from "@/components/RemindersForm";
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigatorParams } from "App";
 import { StyleSheet, View } from "react-native";

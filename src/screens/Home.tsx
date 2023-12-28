@@ -1,5 +1,5 @@
-import Button from "@/components/Button";
-import NoRemindersCard from "@/components/NoRemindersCard";
+import { Button } from "@/components/Button";
+import { NoRemindersCard } from "@/components/NoRemindersCard";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { StackNavigatorParams } from "App";
 import React from "react";
@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginHorizontal: 20,
     marginTop: 20,
+    backgroundColor: "#FFF",
   },
 });
 
