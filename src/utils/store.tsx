@@ -1,11 +1,11 @@
-import { atom } from 'jotai';
+import { atom } from "jotai";
 
 export type Reminder = {
   id: string;
   name: string;
   notes: string;
-  selectDate: string;
-  selectTime: string;
+  date: Date;
+  time: Date;
 };
 
 //Jotai implementation

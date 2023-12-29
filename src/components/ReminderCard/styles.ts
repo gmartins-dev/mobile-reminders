@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 26,
     padding: 10,
+    marginTop: 10,
   },
   cardHeader: {
     flexDirection: "row",

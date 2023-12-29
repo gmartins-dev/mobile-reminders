@@ -29,7 +29,11 @@ export function ReminderCard({ reminder }: ReminderCardProps) {
         <Image resizeMode="contain" source={penIcon} style={styles.penIcon} />
       </View>
       <Text style={styles.cardDescription}>
-        This reminder is set for {reminder.selectTime}
+        This reminder is set for&nbsp;
+        {reminder.time.toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        })}
       </Text>
     </View>
   );
